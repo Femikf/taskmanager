@@ -1,3 +1,5 @@
+# Task Management System
+
 ## Overview
 This is a simple **Task Management System** built using Laravel. It allows users to register, log in, and manage tasks with features like creating, editing, deleting, filtering, and email notifications upon task completion.
 
@@ -42,5 +44,59 @@ Authenticated users can:
 ### Steps to Install
 1. **Clone the Repository:**
 
+    ```bash
+    git clone https://github.com/Femikf/taskmanager.git
+    cd task-management
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    composer install
+    npm install
+    ```
+
+3. **Set Up Environment:**
+    Copy `.env.example` to `.env` and configure database details.
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Generate the application key:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+4. **Run Migrations & Seed Database:**
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+5. **Install & Configure Sanctum:**
+
+    ```bash
+    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+    php artisan migrate
+    ```
+
+6. **Run the Application:**
+
+    ```bash
+    php artisan serve
+    ```
+
+    Open the application at `http://127.0.0.1:8000`
+
+## API Authentication (For API Users)
+Use Laravel Sanctum for API authentication.
+
+After login, include `Authorization: Bearer <your-token>` in API requests.
+
+## Running Tests
+Run feature and unit tests using:
+
 ```bash
-git clone https://github.com/Femikf/taskmanager.git
+php artisan test
