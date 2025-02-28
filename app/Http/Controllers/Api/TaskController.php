@@ -8,7 +8,8 @@ use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TaskCompletedNotification;
 class TaskController extends Controller
 {
     /**
@@ -42,7 +43,9 @@ class TaskController extends Controller
                 'status' => $validated['status'],
                 'due_date' => $validated['due_date'],
             ]);
-
+            if ($task->status == 'Completed') {
+                Mail::to($task->user->email)->send(new TaskCompletedNotification($task));
+            }
             DB::commit();
             return response()->json(['success' => true, 'message' => 'Task created successfully', 'task' => $task], 201);
         } catch (\Exception $e) {
@@ -82,6 +85,9 @@ class TaskController extends Controller
         try {
             DB::beginTransaction();
             $task->update($validated);
+            if ($task->status == 'Completed') {
+                Mail::to($task->user->email)->send(new TaskCompletedNotification($task));
+            }
             DB::commit();
 
             return response()->json(['success' => true, 'message' => 'Task updated successfully', 'task' => $task], 200);
