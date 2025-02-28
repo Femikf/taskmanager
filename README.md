@@ -1,66 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System - README</title>
+</head>
+<body>
+    <h1>Task Management System</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+    <h2>Overview</h2>
+    <p>This is a simple <strong>Task Management System</strong> built using Laravel. It allows users to register, log in, and manage tasks with features like creating, editing, deleting, filtering, and email notifications upon task completion.</p>
 
-## About Laravel
+    <h2>Features</h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    <h3>1. User Authentication</h3>
+    <ul>
+        <li>User registration, login, and logout.</li>
+        <li>Uses Laravel's built-in authentication (Laravel Breeze).</li>
+    </ul>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    <h3>2. Task Management</h3>
+    <ul>
+        <li>Authenticated users can:</li>
+        <ul>
+            <li>Create tasks (Title, Description, Status, Due Date).</li>
+            <li>View all tasks in a tabular format.</li>
+            <li>Edit or delete tasks.</li>
+            <li>Filter tasks by status (Pending, In Progress, Completed).</li>
+        </ul>
+    </ul>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    <h3>3. API Endpoints (Using Laravel Sanctum for Authentication)</h3>
+    <ul>
+        <li><strong>Get all tasks:</strong> GET /api/tasks</li>
+        <li><strong>Create a new task:</strong> POST /api/tasks</li>
+        <li><strong>Update a task:</strong> PUT /api/tasks/{id}</li>
+        <li><strong>Delete a task:</strong> DELETE /api/tasks/{id}</li>
+    </ul>
 
-## Learning Laravel
+    <h3>4. Validations</h3>
+    <ul>
+        <li>Task title should not exceed 255 characters.</li>
+        <li>Due date should be in the future.</li>
+    </ul>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    <h3>5. UI</h3>
+    <ul>
+        <li>Uses Laravel Blade templates.</li>
+        <li>Tasks are displayed in a tabular format with actions for editing and deleting.</li>
+    </ul>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    <h3>6. Email Notifications</h3>
+    <ul>
+        <li>Sends an email notification when a task is marked as <strong>Completed</strong>.</li>
+    </ul>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    <h2>Installation Guide</h2>
 
-## Laravel Sponsors
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>PHP 8.1+</li>
+        <li>Composer</li>
+        <li>MySQL / SQLite / PostgreSQL (Any database supported by Laravel)</li>
+        <li>Node.js & NPM (For frontend dependencies, optional)</li>
+    </ul>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    <h3>Steps to Install</h3>
+    <ol>
+        <li><strong>Clone the Repository:</strong></li>
+        <pre><code>git clone https://github.com/Femikf/taskmanager.git
+cd task-management</code></pre>
 
-### Premium Partners
+        <li><strong>Install Dependencies:</strong></li>
+        <pre><code>composer install
+npm install</code></pre>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+        <li><strong>Set Up Environment:</strong></li>
+        <p>Copy <code>.env.example</code> to <code>.env</code> and configure database details.</p>
+        <pre><code>cp .env.example .env</code></pre>
 
-## Contributing
+        <p>Generate the application key:</p>
+        <pre><code>php artisan key:generate</code></pre>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+        <li><strong>Run Migrations & Seed Database:</strong></li>
+        <pre><code>php artisan migrate --seed</code></pre>
 
-## Code of Conduct
+        <li><strong>Install & Configure Sanctum:</strong></li>
+        <pre><code>php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate</code></pre>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+        <li><strong>Run the Application:</strong></li>
+        <pre><code>php artisan serve</code></pre>
+        <p>Open the application at <code>http://127.0.0.1:8000</code></p>
+    </ol>
 
-## Security Vulnerabilities
+    <h2>API Authentication (For API Users)</h2>
+    <p>Use Laravel Sanctum for API authentication.</p>
+    <p>After login, include <code>Authorization: Bearer &lt;your-token&gt;</code> in API requests.</p>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    <h2>Running Tests</h2>
+    <p>Run feature and unit tests using:</p>
+    <pre><code>php artisan test</code></pre>
 
-## License
+    <h2>Deployment</h2>
+    <ol>
+        <li>Set up a web server (Apache/Nginx).</li>
+        <li>Configure the database in the <code>.env</code> file.</li>
+        <li>Run <code>php artisan migrate --force</code>.</li>
+        <li>Set up cron jobs if required.</li>
+    </ol>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    <h2>License</h2>
+    <p>This project is licensed under the MIT License.</p>
+</body>
+</html>
